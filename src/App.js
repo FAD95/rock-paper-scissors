@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { createContext, useState } from 'react'
 import './App.css'
 import styled from 'styled-components'
 import Header from './components/header'
 import Wrapper from './components/wrapper'
 import Table from './components/table'
 import Rules from './components/rules'
+
+export const ScoreContext = createContext()
 
 const AppStyled = styled.main`
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
@@ -26,16 +28,24 @@ const AppStyled = styled.main`
 `
 
 function App() {
+  const [score, setScore] = useState(0)
   return (
-    <AppStyled className="App">
-      <Wrapper>
-        <div className="app-content">
-          <Header />
-          <Table />
-          <Rules />
-        </div>
-      </Wrapper>
-    </AppStyled>
+    <ScoreContext.Provider
+      value={{
+        score,
+        setScore,
+      }}
+    >
+      <AppStyled className="App">
+        <Wrapper>
+          <div className="app-content">
+            <Header />
+            <Table />
+            <Rules />
+          </div>
+        </Wrapper>
+      </AppStyled>
+    </ScoreContext.Provider>
   )
 }
 

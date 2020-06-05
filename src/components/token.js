@@ -48,7 +48,9 @@ const colors = {
 
 export default function Token({ name = 'default', onClick }) {
   function handleClick() {
-    onClick(name)
+    if (onClick) {
+      onClick(name)
+    }
   }
   return (
     <StyledToken color={colors[name]} name={name} onClick={handleClick}>
