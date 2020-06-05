@@ -10,13 +10,13 @@ const TableStyled = styled.div`
   flex-direction: column;
   .container {
     display: grid;
-    justify-content: center;
+    justify-content: ${({ playing }) => (!playing ? 'center' : 'space-around')};
     grid-gap: 50px;
     grid-template-areas:
       'paper scissors'
       'rock rock';
-    background-image: url(${({ playing }) =>
-      !playing ? 'images/bg-triangle.svg' : null});
+    ${({ playing }) =>
+      !playing ? `background-image: url('images/bg-triangle.svg');` : null}
     background-repeat: no-repeat;
     background-position: center;
     background-size: 225px;
@@ -45,6 +45,20 @@ const TableStyled = styled.div`
       grid-gap: 140px;
       background-size: 360px;
     }
+    .results{
+      
+    }
+    .in-game {
+      font-size: 1.2em;
+      display: flex;
+      flex-direction: column;
+      >div{
+        order: 2;
+      }
+      > p {
+        order: 1;
+      }
+    }
   }
 `
 const Rock = styled.div`
@@ -62,7 +76,6 @@ const elements = ['paper', 'scissors', 'rock']
 
 export default function Table() {
   const { score, setScore } = useContext(ScoreContext)
-
   const [playing, setPlaying] = useState(false)
   const [pick, setPick] = useState('')
   const [housePick, setHousePick] = useState('default')

@@ -3,8 +3,13 @@ import styled, { keyframes } from 'styled-components'
 
 const shadow = keyframes`
     to{
-          box-shadow: 0 0 0 40px rgba(255, 255, 255, 0.04),0 0 0 80px rgba(255, 255, 255, 0.03), 0 0 0 120px rgba(255, 255, 255, 0.02);
+          box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.04),0 0 0 40px rgba(255, 255, 255, 0.03), 0 0 0 70px rgba(255, 255, 255, 0.02);
           transform: rotateZ(360deg) scale(1.1)
+    }
+`
+const box = keyframes`
+    to{
+          transform: rotateY(360deg) 
     }
 `
 
@@ -38,6 +43,10 @@ const StyledToken = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    img {
+      animation: 1s forwards
+        ${({ isShadowAnimated }) => (isShadowAnimated ? box : '')};
+    }
   }
   @media screen and (min-width: 768px) {
     width: 200px;
