@@ -33,7 +33,18 @@ const TableStyled = styled.div`
   }
   .results {
     text-align: center;
-    text-transform: uppercase;
+    h2 {
+      text-transform: uppercase;
+      font-size: 2.5em;
+      letter-spacing: -1px;
+      margin: 10px;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .container {
+      grid-gap: 140px;
+      background-size: 360px;
+    }
   }
 `
 const Rock = styled.div`
@@ -55,7 +66,7 @@ export default function Table() {
   const [playing, setPlaying] = useState(false)
   const [pick, setPick] = useState('')
   const [housePick, setHousePick] = useState('default')
-  const [result, setResult] = useState('???')
+  const [result, setResult] = useState('')
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min
@@ -114,7 +125,7 @@ export default function Table() {
 
   function handlePlayAgainClick() {
     setPlaying(false)
-    setResult('???')
+    setResult('')
   }
   return (
     <TableStyled playing={playing}>
@@ -134,19 +145,24 @@ export default function Table() {
         <>
           <div className="container">
             <div className="in-game">
-              <Token name={pick} />
+              <Token name={pick} isShadowAnimated={result === 'win'} />
               <p>You Picked</p>
             </div>
             <div className="in-game">
-              <Token name={housePick} />
+              <Token name={housePick} isShadowAnimated={result === 'lose'} />
               <p>The house Picked</p>
             </div>
           </div>
 
           <div className="results">
-            <h2>YOU {result}</h2>
-            {}
-            <WhiteButton onClick={handlePlayAgainClick}>Play Again</WhiteButton>
+            {result && (
+              <>
+                <h2> YOU {result}</h2>
+                <WhiteButton onClick={handlePlayAgainClick}>
+                  Play Again
+                </WhiteButton>
+              </>
+            )}
           </div>
         </>
       )}

@@ -10,23 +10,21 @@ const HeaderStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  h1 {
-    font-size: 18px;
-    line-height: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-align: left;
+  img {
+    width: 7em;
+  }
+  @media screen and (min-width: 768px) {
+    padding: 24px;
+    img {
+      width: 10em;
+    }
   }
 `
 
 export default function Header() {
   return (
     <HeaderStyled>
-      <h1>
-        ROCK <br />
-        PAPER <br />
-        SCISSORS
-      </h1>
+      <img src="./images/logo.svg" alt="Logo" />
       <Score />
     </HeaderStyled>
   )

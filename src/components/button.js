@@ -12,6 +12,10 @@ const ButtonStyled = styled.div`
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 2.5px;
+  :hover {
+    background-color: white;
+    color: #101a3f;
+  }
 `
 export const WhiteButton = styled(ButtonStyled)`
   background-color: white;
