@@ -42,22 +42,30 @@ const TableStyled = styled.div`
   }
   @media screen and (min-width: 768px) {
     .container {
+      ${({ playing }) => playing && 'grid-template-columns: 1fr 250px 1fr;'};
       grid-gap: 140px;
+      ${({ playing }) => playing && 'grid-gap: 40px;'};
       background-size: 360px;
     }
-    .results{
-      
+    .results {
+      grid-column: 2/3;
+      grid-row: 1;
     }
     .in-game {
       font-size: 1.2em;
       display: flex;
       flex-direction: column;
-      >div{
+      > div {
         order: 2;
       }
       > p {
         order: 1;
       }
+    }
+  }
+  @media screen and (min-width: 912px) {
+    .container {
+      grid-gap: 140px;
     }
   }
 `
@@ -72,6 +80,7 @@ const Scissors = styled.div`
 const Paper = styled.div`
   grid-area: paper;
 `
+
 const elements = ['paper', 'scissors', 'rock']
 
 export default function Table() {
@@ -165,18 +174,31 @@ export default function Table() {
               <Token name={housePick} isShadowAnimated={result === 'lose'} />
               <p>The house Picked</p>
             </div>
-          </div>
-
-          <div className="results">
-            {result && (
-              <>
-                <h2> YOU {result}</h2>
-                <WhiteButton onClick={handlePlayAgainClick}>
-                  Play Again
-                </WhiteButton>
-              </>
+            {window.screen.width > 768 && (
+              <div className="results">
+                {result && (
+                  <>
+                    <h2> YOU {result}</h2>
+                    <WhiteButton onClick={handlePlayAgainClick}>
+                      Play Again
+                    </WhiteButton>
+                  </>
+                )}
+              </div>
             )}
           </div>
+          {window.screen.width < 768 && (
+            <div className="results">
+              {result && (
+                <>
+                  <h2> YOU {result}</h2>
+                  <WhiteButton onClick={handlePlayAgainClick}>
+                    Play Again
+                  </WhiteButton>
+                </>
+              )}
+            </div>
+          )}
         </>
       )}
     </TableStyled>

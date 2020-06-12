@@ -1,6 +1,5 @@
 import React, { createContext, useState } from 'react'
-import './App.css'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import Header from './components/header'
 import Wrapper from './components/wrapper'
 import Table from './components/table'
@@ -8,6 +7,12 @@ import Rules from './components/rules'
 
 export const ScoreContext = createContext()
 
+const GlobalStyles = createGlobalStyle`
+  body{
+    margin: 0;
+    padding: 0;
+  }
+`
 const AppStyled = styled.main`
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
   background-image: radial-gradient(
@@ -36,6 +41,7 @@ function App() {
         setScore,
       }}
     >
+      <GlobalStyles />
       <AppStyled className="App">
         <Wrapper>
           <div className="app-content">
