@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import RulesImg from '../images/image-rules.svg'
 import CloseBtn from '../images/icon-close.svg'
 
+
 const RulesStyled = styled.div`
   text-align: center;
   &::before {
@@ -73,7 +74,7 @@ const RulesStyled = styled.div`
   }
 `
 
-export default function Rules() {
+export default function(){
   const [visible, setVisible] = useState(false)
   function handleToggleClick() {
     setVisible(!visible)

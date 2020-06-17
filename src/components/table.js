@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Token from './token'
 import { WhiteButton } from './button'
 import { ScoreContext } from '../App'
+import Triangle from '../images/bg-triangle.svg'
 
 const TableStyled = styled.div`
   margin: 2em 0;
@@ -16,7 +17,7 @@ const TableStyled = styled.div`
       'paper scissors'
       'rock rock';
     ${({ playing }) =>
-      !playing ? `background-image: url('images/bg-triangle.svg');` : null}
+      !playing && `background-image: url(${Triangle});`}
     background-repeat: no-repeat;
     background-position: center;
     background-size: 225px;

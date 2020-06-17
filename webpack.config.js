@@ -10,9 +10,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'docs'),
-    filename: 'js/[name].[hash].js',
-    publicPath: 'http://localhost:8080/',
     chunkFilename: 'js/[id].[chunkhash].js',
+    filename: 'js/[name].[hash].js',
   },
   optimization: {
     minimizer: [new TerserJSPlugin()],
@@ -48,7 +47,7 @@ module.exports = {
     new AddAssetHtmlPlugin({
       filepath: path.resolve(__dirname, 'docs/js/*.dll.js'),
       outputPath: 'js',
-      publicPath: 'http://localhost:8080/js',
+      publicPath: 'js/',
     }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/app.*'],

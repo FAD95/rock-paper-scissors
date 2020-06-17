@@ -1,9 +1,9 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, Suspense } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import Header from './components/header'
 import Wrapper from './components/wrapper'
 import Table from './components/table'
-import Rules from './components/rules'
+const Rules = React.lazy(() => import('./components/rules'))
 
 export const ScoreContext = createContext()
 
@@ -34,23 +34,25 @@ const AppStyled = styled.main`
 function App() {
   const [score, setScore] = useState(0)
   return (
-    <ScoreContext.Provider
-      value={{
-        score,
-        setScore,
-      }}
-    >
-      <GlobalStyles />
-      <AppStyled className="App">
-        <Wrapper>
-          <div className="app-content">
-            <Header />
-            <Table />
-            <Rules />
-          </div>
-        </Wrapper>
-      </AppStyled>
-    </ScoreContext.Provider>
+    <Suspense fallback={<div/>}>
+      <ScoreContext.Provider
+        value={{
+          score,
+          setScore,
+        }}
+      >
+        <GlobalStyles />
+        <AppStyled className="App">
+          <Wrapper>
+            <div className="app-content">
+              <Header />
+              <Table />
+              <Rules />
+            </div>
+          </Wrapper>
+        </AppStyled>
+      </ScoreContext.Provider>
+    </Suspense>
   )
 }
 
