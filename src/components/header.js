@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Score from './score'
+import Logo from '../images/logo.svg'
 
 const HeaderStyled = styled.div`
   color: white;
@@ -24,7 +25,7 @@ const HeaderStyled = styled.div`
 export default function Header() {
   return (
     <HeaderStyled>
-      <img src="./images/logo.svg" alt="Logo" />
+      <img src={Logo} alt="Logo" />
       <Score />
     </HeaderStyled>
   )

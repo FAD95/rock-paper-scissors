@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Button from './button'
 import styled from 'styled-components'
+import RulesImg from '../images/image-rules.svg'
+import CloseBtn from '../images/icon-close.svg'
 
 const RulesStyled = styled.div`
   text-align: center;
@@ -82,11 +84,11 @@ export default function Rules() {
       {visible && (
         <div className="rules-overlay">
           <h2>Rules</h2>
-          <img src="./images/image-rules.svg" alt="Game Rules" />
+          <img src={RulesImg} alt="Game Rules" />
           <img
             className="close-button"
             onClick={handleToggleClick}
-            src="./images/icon-close.svg"
+            src={CloseBtn}
             alt="Close "
           />
         </div>

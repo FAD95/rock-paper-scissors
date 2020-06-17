@@ -1,5 +1,8 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
+import Paper from '../images/icon-paper.svg'
+import Rock from '../images/icon-rock.svg'
+import Scissors from '../images/icon-scissors.svg'
 
 const shadow = keyframes`
     to{
@@ -91,7 +94,10 @@ export default function Token({
       isShadowAnimated={isShadowAnimated}
     >
       <div className="box">
-        <img src={`./images/icon-${name}.svg`} alt="" />
+        <img
+          src={name === 'paper' ? Paper : name === 'rock' ? Rock : Scissors}
+          alt={name}
+        />
       </div>
     </StyledToken>
   )

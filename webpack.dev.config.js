@@ -10,7 +10,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
-    publicPath: 'http://localhost:9000',
+    publicPath: 'http://localhost:9000/',
     chunkFilename: 'js/[id].[chunkhash].js',
   },
   devServer: {
@@ -23,11 +23,10 @@ module.exports = {
     rules: [
       {
         test: /\.png|svg|ico$/,
-        include: path.resolve(__dirname, 'public'),
         use: {
           loader: 'file-loader',
           options: {
-            outputPath: 'dist/images',
+            outputPath: 'assets/',
           },
         },
       },
