@@ -8,7 +8,7 @@ module.exports = {
   },
   mode: 'production',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'docs'),
     filename: 'js/[name].[hash].dll.js',
     library: '[name]',
   },

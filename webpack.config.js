@@ -9,19 +9,13 @@ module.exports = {
     app: path.resolve(__dirname, 'src/index.js'),
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'docs'),
     filename: 'js/[name].[hash].js',
     publicPath: 'http://localhost:8080/',
     chunkFilename: 'js/[id].[chunkhash].js',
   },
   optimization: {
     minimizer: [new TerserJSPlugin()],
-  },
-  devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    open: true,
-    port: 9000,
-    hot: true,
   },
   module: {
     rules: [
@@ -52,7 +46,7 @@ module.exports = {
       manifest: require('./modules-manifest.json'),
     }),
     new AddAssetHtmlPlugin({
-      filepath: path.resolve(__dirname, 'dist/js/*.dll.js'),
+      filepath: path.resolve(__dirname, 'docs/js/*.dll.js'),
       outputPath: 'js',
       publicPath: 'http://localhost:8080/js',
     }),
